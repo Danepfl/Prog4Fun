@@ -1,0 +1,16 @@
+Kem brute force (With 2 options):
+Try one option
+Build as usual
+Check if mistake
+If mistake => Fill other option
+Else continue with other 2-options
+
+Develped:
+
+1) Find two options with increment
+2) Take option 1
+3) Launch usual solver
+4) Check mistake&finished
+4a) If mistake, take option 2 and go to 3)
+4b) If no mistake&unfinished, Assume correct and go to 1) (Storing option 1)
+4c) If no mistake&finished => Done

@@ -1,0 +1,33 @@
+Exclude common neighbors from same cage:
+
+for every number
+	for every cage
+		cage_size
+		for every position
+			if it respects cage nbr
+				if it is the 1st position
+					record position neighbors (for the 1st cage position)
+				else
+					no common = 0
+					for recorded position
+						common neighbors=0
+						for new position
+							common neighbors?
+							=> if so, common neighbors=1
+						end
+						if ~common neighbors
+							disable recorded position
+							if recorded=disabled
+								break loop (recorded position)
+								no common =1
+							end
+						end
+					end
+					new_recorded=recorded-disabled
+				end
+			end
+		end
+	end
+end
+
+% Need to exclude possibilities within cage => rec_pos around

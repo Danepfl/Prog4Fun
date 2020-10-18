@@ -1,0 +1,71 @@
+Git Help
+
+check status: git status
+help : git, git help, git help tutorial, git help everyday...
+
+To start:
+
+Change your current directory: cd Name_Folder
+Start git on folder: git init
+
+Link git to revision tracking on a file: git add .
+To commit (version save): git commit -m "Description of version"
+
+To connect git and github: git remote add origin https://github.com/Danepfl/Random.git
+
+To "Push code" (i.e. save it on github): push -u origin master
+
+To "Clone" your files (i.e. download files from github):
+	- click clone on desired repository
+	- copy url link
+	- git clone url
+
+Once cloned, and modified push back files:
+git diff (shows differences between local and online)
+git diff --cached (shows differences between versions)
+git commit -m "Message file update" (Accepts changes you have made)
+
+
+General:
+Create a new file/folder: echo/mkdir
+Add a new file: git add file.txt
+delete file from git: (delete locally, then:) 
+	git add file.txt
+	git commit -m "Deleted file"
+	git push -u origin master
+
+Adding a branch in git:
+
+git branch (lists all the branches in your current directory)
+git checkout -b NameBranch
+gitk (Have an overview of the branches)
+git -m commit "Message"
+git push origin NameBranch
+
+Deleting a branch in git:
+
+git checkout branch
+git branch -D NameBranch
+git push origin :NameBranch / git push -d origin NameBranch
+
+Force pull from own project on Github (use branch if wanting to save current commits):
+git fetch —-all
+git reset —-hard origin/master
+
+To sync github projects:
+git pull <url_project_collaborator>
+git push -u origin master
+
+GitHub:
+1) Fork a repository:
+
+- git clone url
+
+2) Create a branch:
+- git checkout -b new_branch
+
+3) Download the branch on your local
+- git remote add upstream url /His username/His repository
+
+
+

@@ -1,0 +1,88 @@
+Cours 1:
+
+- Installation Matlab
+- Origine nom Matlab
+- Fonctionnement prog/matlab
+- Input/Output, black box (sort of, due to too much info)
+- Interface
+- "Règles du jeu"
+- Bonnes habitudes à prendre
+
+Aide cours 1:
+- Relier if/for etc. avec transistors
+- Relier commentaires avec exemple expérience bio (division cellulaire, inhibiteur, efficacité...)
+- Relier input/output à expérience physique
+
+Fin cours 1:
+
+Petit programme (à faire à la main, comp. thinking):
+Input: Qté neige tombée par jour à Chandolin depuis le début de la saison
+
+Outputs désiré:
+- Qualité neige entre 0 et 1
+- Hauteur neige
+
+Sachant que: 
+- Neige fond de X centimètres par jour
+- Qualité neige qui tombe = 1
+- Qualité mesurée comme moyenne sur les Y derniers centimètres pondérée par x^-0.5
+- Premier jour de la saison = 1er novembre, dernier jour de manière itérative
+- Dégradation de la qualité chaque nuit:
+	- de Z1% sur les A premiers cm (A inclu)
+	- de Z2% sur de A-B cm (B inclu)
+
+Augmentation difficulté:
+Neige fond entre X1 et X2 cm par jour
+Dégradation entre Z1 et Z2 cm par nuit
+Dégradation dépend de chute de neige ou non
+Différenciation chute de neige jour/nuit
+Fonte des neiges influencées par chute de neige
+...
+
+Programme:
+
+clc; close all; clear all;
+Snowvec=[0, 2, 3, ...];
+Snowheight=0;
+Quality=[]; (quality each cm)
+for i=1:length(Snowvec) % i for each day from the 1st of Nov until yesterday
+	NewSnow=Snowvec(i)-X
+	Snowheight=Snowheight+NewSnow; % Day
+	if NewSnow > 0
+		Quality=[ones(NewSnow,1) Quality]; % Bottom snow at the end, New snow at the top
+	else
+		Quality=Quality(NewSnow+1:end);
+	end
+	for j=1:A
+		Quality(j)=(1-Z1/100)*Quality(j);
+	end
+	for j=A+1:B % Either 2 for or 1 for and 2 if
+		Quality(j)=(1-Z2/100)*Quality(j);
+	end
+end
+Quality_tot=0;
+pond=0;
+if length(Quality)>Y
+	for i=1:Y
+		Quality_tot=Quality_tot+Quality(i)*(i^-0.5);
+		pond=pond+1;
+	end
+end
+Snowheight
+Quality_tot=Quality_tot/pond
+
+
+%%%%%
+Chute de neige 2017, https://fr.skiinfo.ch/valais/st-luc-chandolin/historique-enneigement.html?&y=2017
+% Novembre = 30 j, Décembre = 31 j, Janvier = 31 j, Février = 28 j, Mars= 31 j
+
+Snowvec=zeros(149,1); % Chute des neiges par jour depuis le 1er novembre, en cm
+Snowvec(13)=30; Snowvec(30)=15; Snowvec(38)=15; Snowvec(39)=20; 
+Snowvec(41)=50; Snowvec(42)=20; Snowvec(45)=20; Snowvec(48)=20;
+Snowvec(49)=20; Snowvec(58)=10; Snowvec(60)=25; Snowvec(61)=20;
+Snowvec(63)=10; Snowvec(65)=45; Snowvec(70)=60; Snowvec(78)=30;
+Snowvec(79)=20; Snowvec(80)=20; Snowvec(82)=30; Snowvec(83)=30;
+Snowvec(93)=20; Snowvec(104)=5; Snowvec(107)=15; Snowvec(136)=5;
+Snowvec(138)=10; Snowvec(149)=5;
+
+melt_snow=3 % Fonte de la neige, en cm/jour

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1602779470 source:c:\users\dan\desktop\prog4fun\the-great-project\sudoku solver\sudoku_solver.cpp
+	<iostream>
+	<vector>
+
+1602779206 source:c:\users\dan\desktop\prog4fun\the-great-project\sudoku solver\test.cpp
+	<iostream>
+	<vector>
+

@@ -1,0 +1,35 @@
+Cours Matlab:
+
+Fonctionnement prog/matlab (Fonctionnement, quick comparaison à Labview/C++, transistor->bits->language)
+Principe script, input/output
+Règles instructions (for, if (& while))
+Ajouter explications switch, break
+Bonne habitudes à prendre 
+	- clc
+	- clear all
+	- close all
+	- dbstop if error
+	- Commentaires
+	- 3 étapes: Idée Brute -(Comp. thinking)> Idée Matlab, Idée Matlab -> Réussite, Réussite->Certitude OK
+	- Utiliser un minimum d'outils/de variables
+Questions => me/help/doc/stackoverflow/online
+Interface matlab (Run/Pause/Continue/Step/Debug, etc.)
+Interface matlab 2 (Command window, workspace, editor)
+
+Bases matlab (Vecteurs, Matrices, Transposées, etc.)
+Petit programme: Choisir propositions tant que:
+	- 1x avec plot "basic"
+	- 1x avec plot "smart"
+	- 1x avec surf "basic mais paramètrable"
+	- 1x avec calcul
+Introduire fonctions
+Introduire built-in matlab
+Timing program
+Analyser programme que j'ai fait?
+Faire programmes plus important
+
+
+Idées programmes:
+- Comparaison écriture matrice vide et création matrice
+- Pile ou face graphique deux courbes
+- Simulations probabilités somme trois dés (de 3 à 18)

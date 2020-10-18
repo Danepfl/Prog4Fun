@@ -1,0 +1,101 @@
+6:  1 ; 0 1 0 0 ; 1 => 1 needed
+8:  1 1 0 ; 0 1 0 0 ; 1 => 1 needed
+10: 1 1 0 ; 0 1 0 1 ; 0 1 1 => 2 needed
+12: 1 1 0 ; 0 1 0 0 1 0 ; 0 1 1 => 2 needed
+14: 1 1 0 1 ; 0 0 1 0 0 1 0 ; 0 1 1 => 2 needed
+16: 1 1 0 1 ; 0 0 1 0 0 1 0 0 1 ; 0 1 1 => 3 needed
+18: 1 1 0 1 1 0 ; 0 1 0 0 1 0 0 1 0 ; 0 1 1 => 3 needed
+20: 1 1 0 1 1 0 1 ; 0 0 1 0 0 1 0 0 1 0 ; 0 1 1 => 3 needed
+22: 1 1 0 1 1 0	1 ; 0 0 1 0 0 1 0 0 1 0 0 1 ; 0 1 1 => 4 needed
+24: 1 1 0 1 1 0 1 1 0 ; 0 1 0 0 1 0 0 1 0 0 1 0 ; 0 1 1 => 4 needed
+26: 1 1 0 1 1 0 1 1 0 1 ; 0 0 1 0 0 1 0 0 1 0 0 1 0 ; 0 1 1 => 4 needed
+28: 1 1 0 1 1 0 1 1 0 1 ; 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 ; 0 1 1 => 5 needed
+30: 1 1 0 1 1 0 1 1 0 1 1 0 ; 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 ; 0 1 1 => 5 needed
+32: 1 1 0 1 1 0 1 1 0 1 1 0 1 ; 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 ; 0 1 1 => 5 needed
+34: 1 1 0 1 1 0 1 1 0 1 1 0 1 ; 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 ; 0 1 1 => 6 needed
+36: 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 ; 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 ; 0 1 1 => 6 needed
+38: 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 1 ; 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 ; 0 1 1 => 6 needed
+
+Number needed= 1+floor((dim-4)/6) if dim >= 6
+
+
+1 _ _ _ 0 _ 1
+
+for 1 needed:
+Pour chaque nombre:
+Pour chaque ligne avec 4xN°1 et <4xN°2:
+	Pour chaque position (au début)possible:
+		Pour chaque colonne:
+			Si vide:
+				Remplir avec N1 dans tmp si (position init-correcteur)
+				"	avec N2 dans tmp sinon
+			end
+		end
+		Pour chaque colonne (sauf extremites)
+			Si erreur avec colonne voisines
+				Position pas possible! (preuve par l'absurde)
+				Remplir position avec N2 dans final
+				Avertir changement
+				Recalculer positions possible
+				Rajouter correcteur
+				Arrêt
+			end
+		end, skipped si arrêt
+		tmp reset
+	end
+end
+
+for 2 needed:
+Pour chaque nombre:
+Pour chaque ligne avec 3xN°1 et <=3xN°2:
+	Pour chaque position l1 (au début) possible:
+		Pour chaque position l2 possible
+			Pour chaque colonne:
+		
+				Si vide:
+					Remplir avec N1 dans tmp si (position l1-correcteur)
+					"	avec N2 dans tmp sinon
+				end
+			
+			end
+			Pour chaque colonne (sauf extremites)
+				Si erreur avec colonne voisines
+					check(position l2)=1
+					Arrêt
+				end
+			end, skipped si arrêt
+			tmp reset
+		end
+		si tous les check = 1
+				Position pas possible! (preuve par l'absurde)
+				Remplir position l1 avec N2 dans final
+				Avertir changement
+				Recalculer positions possible
+				Rajouter correcteur
+				Return fonction si un des # apparaît (dim-1)/2 fois
+		end
+	end
+end
+
+
+
+
+_ 0 _ _ 1 0 0 1 _ 0
+4 pos possible
+while l<4
+
+l=incrément positions possible
+o=vecteur positions possible (# col)
+k=numéro position vide
+
+
+ConfigRow(x,y,z)
+x pour row
+y pour valeurs
+z pour possibilité
+En résumé: il y a z lignes possibles qui peuvent remplacer la ligne x
+
+145'152 possibilites
+
+ID=x&z
+
