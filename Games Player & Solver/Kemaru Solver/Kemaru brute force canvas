@@ -1,0 +1,16 @@
+While finished=false and 2options=true
+    2options=false
+    for every combination
+        for every position
+            if 2 options
+                - 2options=true
+                - Stack two combinations below all combinations
+                - Trim & Check for error
+                - If error => Delete combination
+                If 1 combination & finished
+                    break (for&) while loop
+                end
+            end
+        end
+    end
+end

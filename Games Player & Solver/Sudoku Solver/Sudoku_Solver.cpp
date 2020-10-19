@@ -449,7 +449,7 @@ int main(){
         0,0,0, 0,1,0, 0,4,0,    1,8,0, 0,0,0, 6,9,0,     2,0,0, 7,0,0, 0,0,0};
 
     for (int i=0; i<81; i++){
-        Init.push_back(oldinit[i]); //Ecriture du sudoku dans le vecteur Init
+        Init.push_back(WorldsHardestSudinit[i]); //Ecriture du sudoku dans le vecteur Init
     }
 
     for(int i=1; i<=81; i++){  //Initialisation vecteur de cases sudoku
@@ -517,9 +517,10 @@ int main(){
         Coordtrans.push_back(Coordi);
          // cout << "Coordi de: " << i << "= " << Coordi[0] << " " << Coordi[1] << " " << Coordi [2]  << " " << Coordi[3] << " " << Coordi[4] << endl; //Check coord. i
     }
-    CoordM.push_back(Coordtrans);
+    CoordM.push_back(Coordtrans); // CoordM=Matrice 9x9x(1-9) ~ La dernière dimension dépend des possibilités pour une case.
 
     CoordM = cleansud(CoordM);
+
     err = errcheck(CoordM);
 
     if (err==1){

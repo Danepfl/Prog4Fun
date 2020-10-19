@@ -1,0 +1,33 @@
+Sudoku, quick guide:
+
+- Define Sudoku & Fill matrix CoordM (9x9x_) where last dimension represents all possibilities
+- Clean Sudoku (Trim)
+    - Trim if two numbers in same cage/column/line
+- Check Error
+Then:
+for every possibility in CoordM
+    for every position in CoordM
+        if 2 options
+            - Run fct option2
+                - Clean sudoku with each option + check error
+                - if 2 options have an error => Sudoku error
+                - if 1 option has an error => Choose other option
+                - if 0 option has an error => Choose both and duplicate Sudokus; restart brute force for all Sudokus
+        end
+    end
+end
+
+if not solved yet
+    for every possibility in CoordM
+        for every position in CoordM
+            if 3 options
+                - Run fct option3
+                    - Clean sudoku with each option + check error
+                    - if 3 options have an error => Sudoku error
+                    - if 2 options have an error => Choose correct option
+                    - if 1 option has an error => Choose 2 correct options and duplicate Sudokus
+                    - if 0 option has an error => Choose all 3 and duplicate Sudokus (x3)
+            end
+        end
+    end
+end
